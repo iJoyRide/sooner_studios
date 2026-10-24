@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* Light off (day) */
+:root {
+  --bg: #f6f4f0;
+  --ink: #2b1b15;
+  --muted: #6b5d53;
+  --rule: #c9bfb4;
+  --tile: #e5dfd4;
+  --dock-bg: #2b1b15;
+  --dock-ink: #f6f4f0;
+  --mood-duration: 600ms;
+}
+
+/* Light on (evening) */
+html[data-light="on"] {
+  --bg: #1e1814;
+  --ink: #efe3d3;
+  --muted: #b3a392;
+  --rule: #5a4a3f;
+  --tile: #2e2620;
+  --dock-bg: #efe3d3;
+  --dock-ink: #1e1814;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-tile: var(--tile);
+  --color-dock-bg: var(--dock-bg);
+  --color-dock-ink: var(--dock-ink);
+  --font-sans: var(--font-schibsted);
+}
+
+html {
+  background: var(--bg);
+  color-scheme: light;
+}
+
+html[data-light="on"] {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Mood fade: colours on everything that uses the tokens */
+body,
+body * {
+  transition-property: background-color, color, border-color, fill, stroke, box-shadow;
+  transition-duration: var(--mood-duration);
+  transition-timing-function: ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --mood-duration: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
