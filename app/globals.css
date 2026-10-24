@@ -37,6 +37,7 @@ html[data-light="on"] {
 html {
   background: var(--bg);
   color-scheme: light;
+  transition: background-color var(--mood-duration) ease;
 }
 
 html[data-light="on"] {
@@ -55,7 +56,8 @@ body {
 /* Mood fade: colours on everything that uses the tokens */
 body,
 body * {
-  transition-property: background-color, color, border-color, fill, stroke, box-shadow;
+  transition-property:
+    background-color, color, border-color, fill, stroke, box-shadow;
   transition-duration: var(--mood-duration);
   transition-timing-function: ease;
 }
@@ -75,4 +77,10 @@ body * {
     transition-duration: 0ms !important;
     animation-duration: 0ms !important;
   }
+}
+
+@utility content-column {
+  max-width: calc(1048px + 32px); /*1080px in max width*/
+  margin-inline: auto;
+  padding-inline: 16px;
 }
