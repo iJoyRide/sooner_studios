@@ -2,8 +2,15 @@
 
 import { useLight } from "@/lib/light-context";
 
-export default function LightToggle() {
+type LightToggleProps = {
+  onDock?: boolean; // true inside MobileDock, where colours are inverted
+};
+
+export default function LightToggle({ onDock = false }: LightToggleProps) {
   const { lit, toggle } = useLight();
+
+  const trackColour = onDock ? "bg-dock-ink/50 lit:bg-dock-ink" : "bg-muted lit:bg-ink";
+  const knobColour = onDock ? "bg-dock-bg" : "bg-bg";
 
   return (
     <button
@@ -19,13 +26,16 @@ export default function LightToggle() {
       {/* The switch: a track with a sliding knob */}
       <span
         aria-hidden="true"
-        className="relative h-4.5 w-8.5 rounded-full bg-muted lit:bg-ink"
+        className={`relative h-4.5 w-8.5 rounded-full ${trackColour}`}
       >
-        <span className="absolute top-0.5 left-0.5 size-3.5 rounded-full bg-bg transition-transform lit:translate-x-4" />
+        <span
+          className={`absolute top-0.5 left-0.5 size-3.5 rounded-full transition-transform lit:translate-x-4 ${knobColour}`}
+        />
       </span>
     </button>
   );
 }
+
 
 function BulbIcon() {
   return (
