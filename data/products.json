@@ -1,0 +1,167 @@
+[
+    {
+        "slug": "dome-pendant",
+        "name": "Dome Pendant",
+        "department": "lighting",
+        "category": "pendants",
+        "material": "Spun aluminium",
+        "images": {
+            "off": "/images/products/dome-pendant-off.svg",
+            "on": "/images/products/dome-pendant-on.svg"
+        }
+    },
+    {
+        "slug": "cone-pendant",
+        "name": "Cone Pendant",
+        "department": "lighting",
+        "category": "pendants",
+        "material": "Powder-coated steel",
+        "images": {
+            "off": "/images/products/cone-pendant-off.svg",
+            "on": "/images/products/cone-pendant-on.svg"
+        }
+    },
+    {
+        "slug": "globe-pendant",
+        "name": "Globe Pendant",
+        "department": "lighting",
+        "category": "pendants",
+        "material": "Opal glass",
+        "images": {
+            "off": "/images/products/globe-pendant-off.svg",
+            "on": "/images/products/globe-pendant-on.svg"
+        }
+    },
+    {
+        "slug": "orbit-disc-sconce",
+        "name": "Orbit Disc Sconce",
+        "department": "lighting",
+        "category": "sconces",
+        "material": "Glazed ceramic",
+        "images": {
+            "off": "/images/products/orbit-disc-sconce-off.svg",
+            "on": "/images/products/orbit-disc-sconce-on.svg"
+        }
+    },
+    {
+        "slug": "arc-wall-sconce",
+        "name": "Arc Wall Sconce",
+        "department": "lighting",
+        "category": "sconces",
+        "material": "Brushed brass",
+        "images": {
+            "off": "/images/products/arc-wall-sconce-off.svg",
+            "on": "/images/products/arc-wall-sconce-on.svg"
+        }
+    },
+    {
+        "slug": "half-moon-sconce",
+        "name": "Half Moon Sconce",
+        "department": "lighting",
+        "category": "sconces",
+        "material": "Plaster",
+        "images": {
+            "off": "/images/products/half-moon-sconce-off.svg",
+            "on": "/images/products/half-moon-sconce-on.svg"
+        }
+    },
+    {
+        "slug": "mushroom-table-lamp",
+        "name": "Mushroom Table Lamp",
+        "department": "lighting",
+        "category": "table",
+        "material": "Glazed ceramic",
+        "images": {
+            "off": "/images/products/mushroom-table-lamp-off.svg",
+            "on": "/images/products/mushroom-table-lamp-on.svg"
+        }
+    },
+    {
+        "slug": "column-table-lamp",
+        "name": "Column Table Lamp",
+        "department": "lighting",
+        "category": "table",
+        "material": "Travertine",
+        "images": {
+            "off": "/images/products/column-table-lamp-off.svg",
+            "on": "/images/products/column-table-lamp-on.svg"
+        }
+    },
+    {
+        "slug": "orb-table-lamp",
+        "name": "Orb Table Lamp",
+        "department": "lighting",
+        "category": "table",
+        "material": "Mouth-blown glass",
+        "images": {
+            "off": "/images/products/orb-table-lamp-off.svg",
+            "on": "/images/products/orb-table-lamp-on.svg"
+        }
+    },
+    {
+        "slug": "arc-floor-lamp",
+        "name": "Arc Floor Lamp",
+        "department": "lighting",
+        "category": "floor",
+        "material": "Blackened steel",
+        "images": {
+            "off": "/images/products/arc-floor-lamp-off.svg",
+            "on": "/images/products/arc-floor-lamp-on.svg"
+        }
+    },
+    {
+        "slug": "tripod-floor-lamp",
+        "name": "Tripod Floor Lamp",
+        "department": "lighting",
+        "category": "floor",
+        "material": "Oak and linen",
+        "images": {
+            "off": "/images/products/tripod-floor-lamp-off.svg",
+            "on": "/images/products/tripod-floor-lamp-on.svg"
+        }
+    },
+    {
+        "slug": "paper-column-floor-lamp",
+        "name": "Paper Column Floor Lamp",
+        "department": "lighting",
+        "category": "floor",
+        "material": "Washi paper",
+        "images": {
+            "off": "/images/products/paper-column-floor-lamp-off.svg",
+            "on": "/images/products/paper-column-floor-lamp-on.svg"
+        }
+    },
+    {
+        "slug": "bollard-light",
+        "name": "Bollard Light",
+        "department": "lighting",
+        "category": "outdoor",
+        "material": "Cast aluminium",
+        "images": {
+            "off": "/images/products/bollard-light-off.svg",
+            "on": "/images/products/bollard-light-on.svg"
+        }
+    },
+    {
+        "slug": "lantern-wall-light",
+        "name": "Lantern Wall Light",
+        "department": "lighting",
+        "category": "outdoor",
+        "material": "Weathered copper",
+        "images": {
+            "off": "/images/products/lantern-wall-light-off.svg",
+            "on": "/images/products/lantern-wall-light-on.svg"
+        }
+    },
+    {
+        "slug": "garden-orb-light",
+        "name": "Garden Orb Light",
+        "department": "lighting",
+        "category": "outdoor",
+        "material": "Polyethylene",
+        "images": {
+            "off": "/images/products/garden-orb-light-off.svg",
+            "on": "/images/products/garden-orb-light-on.svg"
+        }
+    }
+]

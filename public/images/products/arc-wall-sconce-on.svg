@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 300">
+  <defs>
+    <!-- Warm light: bright in the middle, fading to nothing at the edge -->
+    <radialGradient id="glow">
+      <stop offset="0%"   stop-color="#FFD9A0" stop-opacity="0.9" />
+      <stop offset="40%"  stop-color="#F2A65A" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#F2A65A" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="250" height="300" fill="#2E2620" />
+  <circle cx="140" cy="170" r="110" fill="url(#glow)" />
+  <rect x="70" y="110" width="14" height="40" rx="3" fill="#4A3D34" />
+  <path d="M 84 130 Q 125 120 140 150" fill="none" stroke="#4A3D34" stroke-width="4" stroke-linecap="round" />
+  <polygon points="122,150 158,150 168,185 112,185" fill="#FBE3B8" stroke="#E8B878" stroke-width="2" />
+</svg>
