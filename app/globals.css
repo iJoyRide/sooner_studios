@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant lit (&:where(html[data-light="on"] *));
 
 /* Light off (day) */
 :root {
