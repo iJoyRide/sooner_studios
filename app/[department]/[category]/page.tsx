@@ -1,3 +1,4 @@
+import PageTitle from "@/components/PageTitle";
 import { departments } from "@/lib/categories";
 import { getByCategory } from "@/lib/products";
 import { notFound } from "next/navigation";
@@ -34,14 +35,14 @@ export default async function CategoryPage(props: PageProps<"/[department]/[cate
     const products = getByCategory(matchingDepartment.slug, matchingCategory.slug);
 
     return (
-        <div className="content-column py-8">
-            <h1>{matchingCategory.label}</h1>
-            <p>{products.length} pieces</p>
-            <ul>
+        <main>
+            <PageTitle title={matchingCategory.label} count={products.length} />
+            <ul className="content-column">
                 {products.map((product) => (
                     <li key={product.slug}>{product.name}</li>
                 ))}
             </ul>
-        </div>
-    )
+        </main>
+    );
+
 }
