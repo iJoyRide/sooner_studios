@@ -1,6 +1,6 @@
 # Sooner — project brief
 
-Sooner is a **showcase** site (not a shop) for lighting, furniture and objects.
+Sooner is a **showcase** site (not a shop) for lighting, furniture and interior design pieces.
 Its signature feature is a **Light toggle**: every product is shown in two
 photos, lamp off (daylight) and lamp on (evening), and the whole page fades
 between the two moods.
@@ -22,7 +22,7 @@ app/
   layout.tsx                 # <html>, font, LightProvider, sets data-light on <html>
   page.tsx                   # redirect to /lighting
   globals.css                # light-off / light-on tokens, base styles
-  [department]/page.tsx      # "All" view: /lighting, /furniture, /objects
+  [department]/page.tsx      # "All" view: /lighting, /furniture, /interior-design
   [department]/[category]/page.tsx   # /lighting/pendants etc.
 components/
   Header.tsx                 # "Sooner" wordmark only
@@ -60,7 +60,7 @@ public/images/products/      # <slug>-off.jpg and <slug>-on.jpg for every produc
 Departments and categories:
 - lighting: pendants, sconces, table, floor, outdoor
 - furniture: (to be decided)
-- objects: (to be decided)
+- interior-design: (to be decided; decor pieces shown as product cards)
 
 ## Design tokens
 
