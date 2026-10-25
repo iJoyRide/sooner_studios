@@ -1,3 +1,5 @@
+import { LightProvider } from "@/lib/light-context";
+import LightTestButton from "@/components/LightTestButton";
 import Header from "@/components/Header";
 import type { Metadata } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
@@ -32,9 +34,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: lightScript }} />
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <Header />
-        {children}
+        <LightProvider>
+          <Header />
+          {children}
+          <LightTestButton />
+        </LightProvider>
       </body>
+
     </html>
   );
 }
