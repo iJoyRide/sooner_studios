@@ -75,7 +75,7 @@ Departments and categories:
 | --dock-ink   | #F6F4F0         | #1E1814            |
 
 - Switch tokens with `html[data-light="on"]`; transition background and colour over ~600ms.
-- Base text 13px; page title 30px/500 (24px on mobile); wordmark 19px/700, letter-spacing -0.02em.
+- Base text 13px; page title 30px/500 (20px on mobile); wordmark 19px/700, letter-spacing -0.02em.
 - Content column: 1048px of content (max-width 1080px including 16px side padding), centred. Grid gap 16px across, 24px down. Card image aspect 5:6 (250×300 at full width).
 
 ## Layout
@@ -83,8 +83,8 @@ Departments and categories:
 **Desktop (≥1024px)**
 - Header: "Sooner" wordmark on the left, nothing else.
 - Centred title block: "Lighting" with "113 pieces" underneath (muted).
-- Category bar: full column width, rule above and below, 68px tall. Tabs centred as pills
-  (selected = filled ink pill with bg-coloured text; others = 1px rule outline). First tab is "All".
+- Category bar: full column width, no rules, 68px tall, sits close under the title. Tabs centred as slim
+  ~30px pills inside 44px click areas (selected = filled ink pill with bg-coloured text; others = 1px rule outline). First tab is "All".
   LightToggle at the right end: bulb icon, "Light" label, 34×18 switch.
 - When scrolled, the category bar sticks to the top with a soft shadow; header and title scroll away.
 
