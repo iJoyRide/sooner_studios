@@ -1,4 +1,5 @@
 import PageTitle from "@/components/PageTitle";
+import ProductGrid from "@/components/ProductGrid";
 import { departments } from "@/lib/categories";
 import { getByDepartment } from "@/lib/products";
 import { notFound } from "next/navigation";
@@ -25,11 +26,7 @@ export default async function DepartmentPage(props: PageProps<"/[department]">) 
     return (
         <main>
             <PageTitle title={matchingDepartment.label} count={products.length} />
-            <ul className="content-column">
-                {products.map((product) => (
-                    <li key={product.slug}>{product.name}</li>
-                ))}
-            </ul>
+            <ProductGrid products={products} />
         </main>
     );
 }

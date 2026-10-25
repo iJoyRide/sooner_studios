@@ -84,3 +84,13 @@ body * {
   margin-inline: auto;
   padding-inline: 16px;
 }
+
+/* Lamp-on photo: hidden by day, fades in when the light is on */
+.lamp-on {
+  opacity: 0;
+  transition: opacity var(--mood-duration) ease;
+}
+
+html[data-light="on"] .lamp-on {
+  opacity: 1;
+}
