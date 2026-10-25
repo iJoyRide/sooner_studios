@@ -1,6 +1,6 @@
 import { LightProvider } from "@/lib/light-context";
-import LightTestButton from "@/components/LightTestButton";
 import Header from "@/components/Header";
+import LightToggle from "@/components/LightToggle";
 import type { Metadata } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -37,7 +37,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <LightProvider>
           <Header />
           {children}
-          <LightTestButton />
+          <div className="fixed right-4 bottom-4">
+            <LightToggle />
+          </div>
         </LightProvider>
       </body>
 
