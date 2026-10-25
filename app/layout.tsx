@@ -1,7 +1,6 @@
 import { LightProvider } from "@/lib/light-context";
 import Header from "@/components/Header";
-import LightToggle from "@/components/LightToggle";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -15,6 +14,10 @@ const schibsted = Schibsted_Grotesk({
 export const metadata: Metadata = {
   title: "Sooner",
   description: "Sooner Studios",
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 const lightScript = `try {
@@ -37,9 +40,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <LightProvider>
           <Header />
           {children}
-          <div className="fixed right-4 bottom-4 lg:hidden">
-            <LightToggle />
-          </div>
         </LightProvider>
       </body>
 

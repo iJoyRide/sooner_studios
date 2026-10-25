@@ -1,6 +1,7 @@
 import CategoryBar from "@/components/CategoryBar";
 import PageTitle from "@/components/PageTitle";
 import ProductGrid from "@/components/ProductGrid";
+import MobileDock from "@/components/MobileDock";
 import { departments } from "@/lib/categories";
 import { getByDepartment } from "@/lib/products";
 import { notFound } from "next/navigation";
@@ -29,6 +30,7 @@ export default async function DepartmentPage(props: PageProps<"/[department]">) 
             <PageTitle title={matchingDepartment.label} count={products.length} />
             <CategoryBar department={matchingDepartment} />
             <ProductGrid products={products} />
+            <MobileDock categoryLabel="All" />
 
         </main>
     );
