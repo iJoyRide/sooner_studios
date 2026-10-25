@@ -1,0 +1,47 @@
+import { departments } from "@/lib/categories";
+import { getByCategory } from "@/lib/products";
+import { notFound } from "next/navigation";
+
+export const instant = false;
+
+export function generateStaticParams() {
+    const pages: { department: string; category: string }[] = [];
+
+    for (const department of departments) {
+        for (const category of department.categories) {
+            pages.push({ department: department.slug, category: category.slug });
+        }
+    }
+
+    return pages;
+}
+
+export default async function CategoryPage(props: PageProps<"/[department]/[category]">) {
+    const params = await props.params;
+
+    const matchingDepartment = departments.find(
+        (department) => department.slug === params.department
+    );
+
+    const matchingCategory = matchingDepartment?.categories.find(
+        (category) => category.slug === params.category
+    );
+
+    if (!matchingDepartment || !matchingCategory) {
+        notFound();
+    }
+
+    const products = getByCategory(matchingDepartment.slug, matchingCategory.slug);
+
+    return (
+        <div className="content-column py-8">
+            <h1>{matchingCategory.label}</h1>
+            <p>{products.length} pieces</p>
+            <ul>
+                {products.map((product) => (
+                    <li key={product.slug}>{product.name}</li>
+                ))}
+            </ul>
+        </div>
+    )
+}
