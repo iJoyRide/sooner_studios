@@ -32,10 +32,10 @@ export default function CategoryBar({ department, activeCategory }: CategoryBarP
       <div ref={markerRef} aria-hidden="true" />
       <nav
         aria-label="Categories"
-        className={`sticky top-0 z-10 mb-8 hidden bg-bg lg:block ${stuck ? "shadow-md" : ""}`}
+        className={`sticky top-0 z-10 mb-2 hidden bg-bg lg:block ${stuck ? "shadow-md" : ""}`}
       >
         <div className="content-column">
-          <div className="relative flex h-17 items-center justify-center border-y border-rule">
+          <div className="relative flex h-17 items-center justify-center">
             <ul className="flex gap-2">
               <Tab href={`/${department.slug}`} label="All" active={!activeCategory} />
               {department.categories.map((category) => (
@@ -58,7 +58,6 @@ export default function CategoryBar({ department, activeCategory }: CategoryBarP
   );
 }
 
-
 type TabProps = {
   href: string;
   label: string;
@@ -71,11 +70,15 @@ function Tab({ href, label, active }: TabProps) {
       <Link
         href={href}
         aria-current={active ? "page" : undefined}
-        className={`inline-flex min-h-11 items-center rounded-full border px-4 ${active ? "border-ink bg-ink text-bg" : "border-rule"
-          }`}
+        className="inline-flex min-h-11 items-center rounded-full"
       >
-        {label}
+        <span
+          className={`rounded-full border px-3 py-1 ${active ? "border-ink bg-ink text-bg" : "border-rule"}`}
+        >
+          {label}
+        </span>
       </Link>
     </li>
   );
+
 }
