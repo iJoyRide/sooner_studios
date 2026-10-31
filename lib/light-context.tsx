@@ -33,7 +33,18 @@ export function LightProvider({ children }: { children: ReactNode }) {
 
     function toggle() {
         const next = lit ? "off" : "on";
-        document.documentElement.dataset.light = next;
+
+        function apply() {
+            document.documentElement.dataset.light = next;
+        }
+
+        // Crossfade the whole page in one go; browsers without the API switch instantly
+        if (document.startViewTransition) {
+            document.startViewTransition(apply);
+        } else {
+            apply();
+        }
+
         try {
             localStorage.setItem("sooner-light", next);
         } catch {

@@ -38,7 +38,6 @@ html[data-light="on"] {
 html {
   background: var(--bg);
   color-scheme: light;
-  transition: background-color var(--mood-duration) ease;
 }
 
 html[data-light="on"] {
@@ -54,13 +53,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Mood fade: colours on everything that uses the tokens */
-body,
-body * {
-  transition-property:
-    background-color, color, border-color, fill, stroke, box-shadow;
-  transition-duration: var(--mood-duration);
-  transition-timing-function: ease;
+/* Mood fade: the whole page crossfades as one snapshot (see light-context.tsx) */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: var(--mood-duration);
 }
 
 :focus-visible {
@@ -78,6 +75,11 @@ body * {
     transition-duration: 0ms !important;
     animation-duration: 0ms !important;
   }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 
 @utility content-column {
@@ -86,10 +88,9 @@ body * {
   padding-inline: 16px;
 }
 
-/* Lamp-on photo: hidden by day, fades in when the light is on */
+/* Lamp-on photo: hidden by day, shown when the light is on */
 .lamp-on {
   opacity: 0;
-  transition: opacity var(--mood-duration) ease;
 }
 
 html[data-light="on"] .lamp-on {

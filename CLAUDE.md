@@ -74,7 +74,7 @@ Departments and categories:
 | --dock-bg    | #2B1B15         | #EFE3D3            |
 | --dock-ink   | #F6F4F0         | #1E1814            |
 
-- Switch tokens with `html[data-light="on"]`; transition background and colour over ~600ms.
+- Switch tokens with `html[data-light="on"]`; crossfade via View Transitions (~600ms).
 - Base text 13px; page title 30px/500 (20px on mobile); wordmark 19px/700, letter-spacing -0.02em.
 - Content column: 1048px of content (max-width 1080px including 16px side padding), centred. Grid gap 16px across, 24px down. Card image aspect 5:6 (250×300 at full width).
 

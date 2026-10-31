@@ -29,7 +29,7 @@ export default function LightToggle({ onDock = false }: LightToggleProps) {
         className={`relative h-4.5 w-8.5 rounded-full ${trackColour}`}
       >
         <span
-          className={`absolute top-0.5 left-0.5 size-3.5 rounded-full transition-transform lit:translate-x-4 ${knobColour}`}
+          className={`absolute top-0.5 left-0.5 size-3.5 rounded-full [view-transition-name:light-knob] lit:translate-x-4 ${knobColour}`}
         />
       </span>
     </button>
