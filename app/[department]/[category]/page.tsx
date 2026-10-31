@@ -3,7 +3,7 @@ import ProductGrid from "@/components/ProductGrid";
 import CategoryBar from "@/components/CategoryBar";
 import MobileDock from "@/components/MobileDock";
 import { departments } from "@/lib/categories";
-import { getByCategory } from "@/lib/products";
+import { getByCategory, getByDepartment, getCategoryCounts } from "@/lib/products";
 import { notFound } from "next/navigation";
 
 export const instant = false;
@@ -42,7 +42,13 @@ export default async function CategoryPage(props: PageProps<"/[department]/[cate
             <PageTitle title={matchingCategory.label} count={products.length} />
             <CategoryBar department={matchingDepartment} activeCategory={matchingCategory.slug} />
             <ProductGrid products={products} />
-            <MobileDock categoryLabel={matchingCategory.label} />
+            <MobileDock
+                categoryLabel={matchingCategory.label}
+                department={matchingDepartment}
+                activeCategory={matchingCategory.slug}
+                counts={getCategoryCounts(matchingDepartment.slug)}
+                total={getByDepartment(matchingDepartment.slug).length}
+            />
         </main>
     );
 }

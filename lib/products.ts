@@ -43,3 +43,12 @@ export function getByDepartment(departmentSlug: string): Product[] {
 export function getByCategory(departmentSlug: string, categorySlug: string): Product[] {
     return products.filter((product) => product.department === departmentSlug && product.category === categorySlug)
 }
+
+export function getCategoryCounts(departmentSlug: string): Record<string, number> {
+    const counts: Record<string, number> = {};
+    for (const product of getByDepartment(departmentSlug)) {
+        counts[product.category] = (counts[product.category] ?? 0) + 1;
+    }
+
+    return counts;
+}
