@@ -1,20 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useSelectedLayoutSegment } from "next/navigation";
+import { useRef, useState } from "react";
 import CategorySheet from "@/components/CategorySheet";
 import LightToggle from "@/components/LightToggle";
 import type { Department } from "@/lib/categories";
 
 type MobileDockProps = {
-  categoryLabel: string; // e.g. "Pendants", or "All"
   department: Department;
-  activeCategory?: string; // left out on the "All" page
   counts: Record<string, number>;
   total: number;
 };
 
-export default function MobileDock({ categoryLabel, department, activeCategory, counts, total }: MobileDockProps) {
+export default function MobileDock({ department, counts, total }: MobileDockProps) {
+  // The part of the URL after the department, e.g. "sconces"; null on the "All" page
+  const activeCategory = useSelectedLayoutSegment() ?? undefined;
+  const categoryLabel =
+    department.categories.find((category) => category.slug === activeCategory)?.label ?? "All";
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  function closeSheet() {
+    setOpen(false);
+    // Wait a frame for the dock to be visible again, then put focus back on its button
+    requestAnimationFrame(() => buttonRef.current?.focus());
+  }
+
   return (
     <>
       {open && (
@@ -23,7 +34,7 @@ export default function MobileDock({ categoryLabel, department, activeCategory, 
           activeCategory={activeCategory}
           counts={counts}
           total={total}
-          onClose={() => setOpen(false)}
+          onClose={closeSheet}
         />
       )}
       <div className={`fixed inset-x-0 bottom-[calc(28px+env(safe-area-inset-bottom))] z-20 flex justify-center lg:hidden ${open ? "invisible" : ""}`}>
@@ -31,6 +42,7 @@ export default function MobileDock({ categoryLabel, department, activeCategory, 
           <button
             type="button"
             onClick={() => setOpen(true)}
+            ref={buttonRef}
             aria-label={`Category: ${categoryLabel}. Change category`}
             className="inline-flex min-h-11 items-center gap-1 px-3"
           >
