@@ -11,6 +11,7 @@
   --dock-bg: #2b1b15;
   --dock-ink: #f6f4f0;
   --mood-duration: 600ms;
+  --scrim: rgb(43 27 21 / 0.4);
 }
 
 /* Light on (evening) */
@@ -22,6 +23,7 @@ html[data-light="on"] {
   --tile: #2e2620;
   --dock-bg: #efe3d3;
   --dock-ink: #1e1814;
+  --scrim: rgb(0 0 0 / 0.6);
 }
 
 @theme inline {
@@ -33,6 +35,7 @@ html[data-light="on"] {
   --color-dock-bg: var(--dock-bg);
   --color-dock-ink: var(--dock-ink);
   --font-sans: var(--font-schibsted);
+  --color-scrim: var(--scrim);
 }
 
 html {
