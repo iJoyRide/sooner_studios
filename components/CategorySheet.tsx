@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import type { Department } from "@/lib/categories";
 
@@ -14,6 +14,9 @@ export default function CategorySheet({ department, activeCategory, counts, tota
     const headingId = useId();
     const closeRef = useRef<HTMLButtonElement>(null);
     const panelRef = useRef<HTMLDivElement>(null);
+    // Closing plays the slide-down first; onClose runs once it has finished (see onAnimationEnd)
+    const [closing, setClosing] = useState(false);
+    const close = () => setClosing(true);
 
     // Move focus into the sheet when it opens
     useEffect(() => {
@@ -24,7 +27,7 @@ export default function CategorySheet({ department, activeCategory, counts, tota
     useEffect(() => {
         function handleKeyDown(event: KeyboardEvent) {
             if (event.key === "Escape") {
-                onClose();
+                setClosing(true);
                 return;
             }
             if (event.key !== "Tab" || !panelRef.current) return;
@@ -43,7 +46,7 @@ export default function CategorySheet({ department, activeCategory, counts, tota
         }
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
-    }, [onClose]);
+    }, []);
 
     // Stop the page behind from scrolling while the sheet is open
     useEffect(() => {
@@ -57,14 +60,21 @@ export default function CategorySheet({ department, activeCategory, counts, tota
     return (
         <div className="fixed inset-0 z-30 lg:hidden">
             {/* Backdrop: tapping outside the sheet closes it */}
-            <div aria-hidden="true" onClick={onClose} className="absolute inset-0 bg-scrim" />
+            <div
+                aria-hidden="true"
+                onClick={close}
+                className={`absolute inset-0 bg-scrim ${closing ? "animate-[fade-out_220ms_ease-in_forwards]" : "animate-[fade-in_280ms_ease-out]"}`}
+            />
 
             <div
                 role="dialog"
                 ref={panelRef}
                 aria-modal="true"
                 aria-labelledby={headingId}
-                className="absolute inset-x-0 bottom-0 rounded-t-[20px] bg-bg pb-[env(safe-area-inset-bottom)]"
+                onAnimationEnd={(event) => {
+                    if (closing && event.target === event.currentTarget) onClose();
+                }}
+                className={`absolute inset-x-0 bottom-0 rounded-t-[20px] bg-bg pb-[env(safe-area-inset-bottom)] ${closing ? "animate-[sheet-down_220ms_ease-in_forwards]" : "animate-[sheet-up_280ms_ease-out]"}`}
             >
                 {/* Grab handle */}
                 <div aria-hidden="true" className="mx-auto mt-2 h-1 w-9 rounded-full bg-rule" />
@@ -74,7 +84,7 @@ export default function CategorySheet({ department, activeCategory, counts, tota
                     <button
                         type="button"
                         ref={closeRef}
-                        onClick={onClose}
+                        onClick={close}
                         aria-label="Close"
                         className="inline-flex size-11 items-center justify-center"
                     >
@@ -83,7 +93,7 @@ export default function CategorySheet({ department, activeCategory, counts, tota
                 </div>
 
                 <ul className="pb-2">
-                    <Row href={`/${department.slug}`} label="All" count={total} active={!activeCategory} onSelect={onClose} />
+                    <Row href={`/${department.slug}`} label="All" count={total} active={!activeCategory} onSelect={close} />
                     {department.categories.map((category) => (
                         <Row
                             key={category.slug}
@@ -91,7 +101,7 @@ export default function CategorySheet({ department, activeCategory, counts, tota
                             label={category.label}
                             count={counts[category.slug] ?? 0}
                             active={category.slug === activeCategory}
-                            onSelect={onClose}
+                            onSelect={close}
                         />
                     ))}
                 </ul>
