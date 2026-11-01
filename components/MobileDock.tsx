@@ -38,13 +38,13 @@ export default function MobileDock({ department, counts, total }: MobileDockProp
         />
       )}
       <div className={`fixed inset-x-0 bottom-[calc(28px+env(safe-area-inset-bottom))] z-20 flex justify-center lg:hidden ${open ? "invisible" : ""}`}>
-        <div className="flex items-center rounded-full bg-dock-bg text-dock-ink px-2 shadow-lg">
+        <div data-dock className="flex items-center rounded-full bg-dock-bg text-dock-ink px-2 shadow-lg">
           <button
             type="button"
             onClick={() => setOpen(true)}
             ref={buttonRef}
             aria-label={`Category: ${categoryLabel}. Change category`}
-            className="inline-flex min-h-11 items-center gap-1 px-3"
+            className="inline-flex min-h-11 items-center gap-1 rounded-full px-3"
           >
             <span>Category · {categoryLabel}</span>
             <span aria-hidden="true">▾</span>

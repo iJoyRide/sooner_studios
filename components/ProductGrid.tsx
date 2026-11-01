@@ -8,8 +8,8 @@ type ProductGridProps = {
 export default function ProductGrid({ products }: ProductGridProps) {
   return (
     <ul className="content-column grid grid-cols-2 gap-x-4 gap-y-6 pb-32 lg:grid-cols-4 lg:pb-16">
-      {products.map((product) => (
-        <ProductCard key={product.slug} product={product} />
+      {products.map((product, i) => (
+        <ProductCard key={product.slug} product={product} eager={i < 4} />
       ))}
     </ul>
   );
