@@ -68,6 +68,12 @@ body {
   outline-offset: 2px;
 }
 
+/* The dock's background is ink-coloured, so its focus ring uses dock-ink and sits inside the pill */
+[data-dock] :focus-visible {
+  outline-color: var(--dock-ink);
+  outline-offset: -2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --mood-duration: 0ms;

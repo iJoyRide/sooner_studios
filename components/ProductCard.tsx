@@ -3,9 +3,10 @@ import type { Product } from "@/lib/products";
 
 type ProductCardProps = {
   product: Product;
+  eager?: boolean;
 };
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, eager = false }: ProductCardProps) {
   return (
     <li>
       <div className="relative aspect-5/6 overflow-hidden bg-tile">
@@ -14,6 +15,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           alt={product.name}
           fill
           sizes="(min-width: 1024px) 250px, 50vw"
+          loading={eager ? "eager" : undefined}
         />
         <Image
           src={product.images.on}

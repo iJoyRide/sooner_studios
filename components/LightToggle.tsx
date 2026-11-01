@@ -18,7 +18,7 @@ export default function LightToggle({ onDock = false }: LightToggleProps) {
       onClick={toggle}
       aria-pressed={lit}
       aria-label={lit ? "Lighting: on" : "Lighting: off"}
-      className="inline-flex min-h-11 items-center gap-2 px-2"
+      className="inline-flex min-h-11 items-center gap-2 rounded-full px-2"
     >
       <BulbIcon />
       <span>Light</span>
