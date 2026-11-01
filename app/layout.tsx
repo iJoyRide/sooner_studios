@@ -25,6 +25,14 @@ const lightScript = `try {
   document.documentElement.dataset.light = saved === "on" ? "on" : "off";
 } catch {}`;
 
+// Remember whether the last input was a tap/click or a key press, so focus rings only show for keyboard users
+const inputScript = `addEventListener("pointerdown", function () {
+  document.documentElement.dataset.input = "pointer";
+}, true);
+addEventListener("keydown", function () {
+  document.documentElement.dataset.input = "keyboard";
+}, true);`;
+
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -35,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: lightScript }} />
+        <script dangerouslySetInnerHTML={{ __html: inputScript }} />
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LightProvider>
