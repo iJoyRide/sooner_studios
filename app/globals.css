@@ -68,6 +68,10 @@ body {
   outline-offset: 2px;
 }
 
+html[data-input="pointer"] :focus-visible {
+  outline: none;
+}
+
 /* The dock's background is ink-coloured, so its focus ring uses dock-ink and sits inside the pill */
 [data-dock] :focus-visible {
   outline-color: var(--dock-ink);
