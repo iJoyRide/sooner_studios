@@ -109,3 +109,25 @@ html[data-input="pointer"] :focus-visible {
 html[data-light="on"] .lamp-on {
   opacity: 1;
 }
+
+/* CategorySheet drawer: panel slides up from the bottom edge, backdrop fades */
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes sheet-down {
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
