@@ -26,7 +26,7 @@ export default async function DepartmentPage(props: PageProps<"/[department]">) 
 
     return (
         <main>
-            <PageTitle title={matchingDepartment.label} count={products.length} />
+            <PageTitle title={matchingDepartment.label} count={products.length} noun={matchingDepartment.noun} />
             <CategoryBar department={matchingDepartment} />
             <ProductGrid products={products} />
         </main>

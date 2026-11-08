@@ -38,7 +38,7 @@ export default async function CategoryPage(props: PageProps<"/[department]/[cate
 
     return (
         <main>
-            <PageTitle title={matchingCategory.label} count={products.length} />
+            <PageTitle title={matchingCategory.label} count={products.length} noun={matchingDepartment.noun} />
             <CategoryBar department={matchingDepartment} activeCategory={matchingCategory.slug} />
             <ProductGrid products={products} />
         </main>

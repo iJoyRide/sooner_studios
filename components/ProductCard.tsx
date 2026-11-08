@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Product } from "@/lib/products";
+import { departments } from "@/lib/categories";
 
 type ProductCardProps = {
   product: Product;
@@ -7,6 +8,9 @@ type ProductCardProps = {
 };
 
 export default function ProductCard({ product, eager = false }: ProductCardProps) {
+  const department = departments.find((d) => d.slug === product.department);
+  const category = department?.categories.find((c) => c.slug === product.category);
+  const detail = product.material ?? category?.label;
   return (
     <li>
       <div className="relative aspect-5/6 overflow-hidden bg-tile">
@@ -26,7 +30,7 @@ export default function ProductCard({ product, eager = false }: ProductCardProps
         />
       </div>
       <h2 className="mt-3 font-medium">{product.name}</h2>
-      <p className="text-muted">{product.material}</p>
+      <p className="text-muted">{detail}</p>
     </li>
   );
 }

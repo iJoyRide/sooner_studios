@@ -6,6 +6,7 @@ export type Category = {
 export type Department = {
     slug: string;
     label: string;
+    noun: string;
     categories: Category[];
 }
 
@@ -13,6 +14,7 @@ export const departments: Department[] = [
     {
         slug: "lighting",
         label: "Lighting",
+        noun: "piece",
         categories: [
             { slug: "pendants", label: "Pendants" },
             { slug: "sconces", label: "Sconces" },
@@ -21,5 +23,15 @@ export const departments: Department[] = [
             { slug: "outdoor", label: "Outdoor" },
         ],
 
+    },
+
+    {
+        slug: "interior-design",
+        label: "Interior design",
+        noun: "project",
+        categories: [
+            { slug: "residential", label: "Residential"},
+            { slug: "commercial", label: "Commercial"},
+        ],
     },
 ];
