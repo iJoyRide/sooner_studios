@@ -30,6 +30,8 @@ components/
   Header.tsx                 # client: "Sooner" wordmark + department links (current one highlighted)
   Footer.tsx                 # every page (in layout.tsx): email, Instagram, ©SOONER <year>
   DepartmentTile.tsx         # home page: large image tile linking to a department
+  StickyBar.tsx              # client: slim sticky bar, optional left content + LightToggle at right
+                             # (home page, project pages)
   PageTitle.tsx              # centred: department or category name + "N pieces" / "N projects"
   CategoryBar.tsx            # desktop: centred tabs + LightToggle at right end; sticky on scroll
   MobileDock.tsx             # mobile: floating pill at bottom — category button | light toggle
@@ -85,7 +87,8 @@ cycles through projects in `products.json` order.
 Light toggle placement must be the same on every page: on desktop it sits at the right end of a
 sticky bar (the CategoryBar on grid pages; on project pages a slim bar with "← All projects" on the
 left and the LightToggle on the right, same height, stickiness and shadow as the CategoryBar). On
-mobile it is in the MobileDock. The home page has it under the intro line.
+mobile it is in the MobileDock. The home page has no dock, so its sticky bar (above the tiles) shows
+on mobile too. The project-page and home-page bars are the same `StickyBar` component.
 
 Next.js has `cacheComponents` on: don't use `dynamicParams`; reject unknown params with `notFound()`.
 
@@ -123,8 +126,7 @@ Sooner                                    Lighting   Interior Design
           lighting, objects and spaces through material,
           construction and proportion.
 
-                         💡 Light  [○  ]
-
+                                                   💡 Light  [○  ]   ← sticky bar
 ┌──────────────────────────────┐  ┌──────────────────────────────┐
 │                              │  │                              │
 │   first lighting product     │  │   first interior design      │
@@ -143,8 +145,9 @@ Singapore                                                ©SOONER 2026
 
 - Intro line (the client's own copy, verbatim): "An independent design label exploring furniture,
   lighting, objects and spaces through material, construction and proportion."
-  Centred, ~24px/500 on desktop, 18px on mobile, max ~640px wide. This is the page's `<h1>`.
-- LightToggle centred under the intro line (same component as the CategoryBar and dock).
+  Centred, ~24px/500 on desktop (two balanced lines), 18px on mobile, max ~860px wide. This is the page's `<h1>`.
+- `StickyBar` between the intro line and the tiles: empty on the left, LightToggle at the right end,
+  sticks with a shadow on scroll, shown on mobile too (no dock on the home page).
 - Two department tiles, built from `departments` (so a new department adds a tile):
   side by side on desktop (16px gap), stacked on mobile. Each tile is one link: image (aspect 5:6
   on mobile, 4:5 on desktop), then department label + "→", then the count ("15 pieces") in muted.
