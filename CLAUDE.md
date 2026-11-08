@@ -28,7 +28,8 @@ app/
                                             # (interior design only; anything else → notFound())
 components/
   Header.tsx                 # client: "Sooner" wordmark + department links (current one highlighted)
-  Footer.tsx                 # every page (in layout.tsx): email, Instagram, ©SOONER <year>
+  Footer.tsx                 # every page (in layout.tsx): email, department links, Instagram, © <year> Sooner Studios
+  CurrentYear.tsx            # server: current year inside "use cache" + cacheLife("days")
   DepartmentTile.tsx         # home page: large image tile linking to a department
   StickyBar.tsx              # client: slim sticky bar, optional left content + LightToggle at right
                              # (home page, project pages)
@@ -137,10 +138,14 @@ Lighting →                         Interior Design →
 15 pieces                          5 projects
 
 ──────────────────────────────────────────────────────────────────
-Contact                     Follow            Explore
-soonerstudios.sg@gmail.com  Instagram         Lighting
-                                              Interior Design
-Singapore                                                ©SOONER 2026
+Sooner   Get in touch                ┌──────────────────────────────┐
+         For projects and enquiries… │ soonerstudios…  [ EMAIL US ] │
+                                     └──────────────────────────────┘
+         Explore           Social
+         Lighting          Instagram
+         Interior Design
+──────────────────────────────────────────────────────────────────
+© 2026 Sooner Studios. All rights reserved.
 ```
 
 - Intro line (the client's own copy, verbatim): "An independent design label exploring furniture,
@@ -157,12 +162,18 @@ Singapore                                                ©SOONER 2026
 
 **Footer (every page)**
 - Added once in `layout.tsx`, below the page content, `--rule` line on top. A `<footer>` landmark.
-- Three labelled columns, labels in `--muted`, links in `--ink`:
-  - **Contact**: email as a `mailto:` link (soonerstudios.sg@gmail.com)
-  - **Follow**: Instagram (https://instagram.com/soonerstudios, opens in a new tab, `rel="noopener noreferrer"`)
-  - **Explore**: one link per department, built from `departments`
-- Bottom row: "Singapore" on the left, "©SOONER" + current year on the right, both muted.
-- Desktop: columns side by side. Mobile: columns stacked (or 2 across), bottom row stacked.
+- Layout adapted from HyperUI's "Large with newsletter form" footer
+  (hyperui.dev/components/marketing/footers), in Sooner's tokens:
+  - "Sooner" wordmark on the left (same style as the header's, links to `/`); the grid sits beside it on desktop.
+  - Top row: "Get in touch" heading + one muted line; on the right, where HyperUI has the newsletter form,
+    a single `mailto:` link (soonerstudios.sg@gmail.com) styled as an outlined box with a filled ink
+    "Email us" button. No real form: there is no mailing list.
+  - Compact (client request): tight spacing, no category lists.
+  - "Explore" column: one link per department (built from `departments`).
+  - "Social" column, same style: Instagram as a text link
+    (https://instagram.com/soonerstudios, new tab, `rel="noopener noreferrer"`).
+- Bottom row under a `--rule` line: "© <current year> Sooner Studios. All rights reserved.", muted.
+- Desktop: 5-column grid beside the wordmark. Mobile: wordmark on top, everything stacked.
   Links are 44px tall touch targets.
 - On pages with the MobileDock, keep enough bottom padding that the dock never covers the footer.
 
