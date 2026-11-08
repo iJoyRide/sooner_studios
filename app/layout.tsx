@@ -1,5 +1,6 @@
 import { LightProvider } from "@/lib/light-context";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import type { Metadata, Viewport } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <LightProvider>
           <Header />
           {children}
+          <Footer />
         </LightProvider>
       </body>
 
