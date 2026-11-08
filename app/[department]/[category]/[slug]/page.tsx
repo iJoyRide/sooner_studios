@@ -1,8 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getByDepartment, getBySlug } from "@/lib/products";
 import StickyBar from "@/components/StickyBar";
+import ProjectCarousel from "@/components/ProjectCarousel";
+
 
 export const instant = false;
 
@@ -53,22 +54,11 @@ export default async function ProjectPage(props: PageProps<"/[department]/[categ
                 </Link>
 
                 <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-                    <div className="relative aspect-5/6 overflow-hidden bg-tile">
-                        <Image
-                            src={project.images.off}
-                            alt={project.name}
-                            fill
-                            sizes="(min-width: 1024px) 524px, 100vw"
-                            loading="eager"
-                        />
-                        <Image
-                            src={project.images.on}
-                            alt=""
-                            fill
-                            sizes="(min-width: 1024px) 524px, 100vw"
-                            className="lamp-on"
-                        />
-                    </div>
+                    <ProjectCarousel
+                        photos={[project.images.off, project.images.on]} // stand-in until PER-27 adds gallery
+                        name={project.name}
+                    />
+
 
                     <div>
                         <h1 className="text-[20px] font-medium leading-tight lg:text-[30px]">
