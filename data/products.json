@@ -164,12 +164,19 @@
             "on": "/images/products/garden-orb-light-on.svg"
         }
     },
-    {   
+    {
         "slug": "beth",
         "name": "Beth",
-        "department" : "interior-design",
+        "department": "interior-design",
         "category": "commercial",
-        "images" : {
+        "date": "2025",
+        "location": "Upper Thomson, Singapore",
+        "scope": "Interiors, Brand Activation",
+        "summary": "A cafe-wine bar conceived to feel less like a restaurant and more like a familiar, lived-in room.",
+        "description": [
+            "Tucked along Upper Thomson, Beth (@welcometobeth) moves effortlessly from sunlit cafe by day to slow-burning wine bar by night. We designed it to feel less like a restaurant, more like a memory – warm, lived-in, quietly confident. Think olive oil wood tones, terracotta floors, hand-finished textures, and lighting that softens as the day winds down. Familiar, but with a wink. Honest, but a little flirtatious. A space to eat, drink, linger – and maybe fall in love a little."
+        ],
+        "images": {
             "off": "/images/projects/beth-off.svg",
             "on": "/images/projects/beth-on.svg"
         }
@@ -179,6 +186,13 @@
         "name": "DINKWAC!",
         "department": "interior-design",
         "category": "residential",
+        "date": "2026",
+        "location": "Punggol Coast, Singapore",
+        "scope": "Interiors",
+        "summary": "Big ambitions, modest means, and a little colour to make it all work.",
+        "description": [
+            "A long wish list and a short budget set the challenge for this four-room BTO in Punggol, designed for a young couple and their cat. With little room for extravagant gestures, colour became one of the most effective tools for injecting character into the home. A bold checkerboard kitchen floor, deep green cabinetry and burgundy accents are punctuated by unexpected flashes of yellow, while warm timber finishes bring a sense of balance to the living spaces. The design was an exercise in balancing ambition with practicality, finding creative ways to make the most of modest means. The result is a home that doesn't take itself too seriously, with plenty of personality and a few surprises tucked away."
+        ],
         "images": {
             "off": "/images/projects/dinkwac-off.svg",
             "on": "/images/projects/dinkwac-on.svg"
@@ -189,6 +203,13 @@
         "name": "Good Company",
         "department": "interior-design",
         "category": "residential",
+        "date": "2024",
+        "location": "Hougang, Singapore",
+        "scope": "Interiors",
+        "summary": "Friends in residence: A childhood home refreshed for friends, pairing cheerful colours with easy-care finishes for relaxed, shared living.",
+        "description": [
+            "This four-room resale HDB flat in Hougang holds fond memories for its owner, who grew up here before moving overseas. Now rented to a group of university friends, the apartment was given a new lease of life with the aim of creating a welcoming home for its temporary occupants. A warm palette of natural wood, punctuated by playful bursts of colour, brings a sense of joy and familiarity, while clean surfaces, streamlined cabinetry and easy-to-maintain finishes make everyday living fuss-free. The result is a cheerful, unpretentious home that balances practicality with personality, ready for a new generation of memories."
+        ],
         "images": {
             "off": "/images/projects/good-company-off.svg",
             "on": "/images/projects/good-company-on.svg"
@@ -199,6 +220,13 @@
         "name": "Everyday Rituals",
         "department": "interior-design",
         "category": "residential",
+        "date": "2022–2023",
+        "location": "CCK, Singapore",
+        "scope": "Interiors",
+        "summary": "A thoughtful renewal of a family home, celebrating the everyday rituals of cooking and bathing through refined details, considered accessibility and understated luxury.",
+        "description": [
+            "A thoughtful refresh of a family home after two decades, this project celebrates the rituals of everyday living while adapting to changing needs. Retaining the successful free-plan kitchen with its central island, the redesign introduces refined finishes, dual ovens and dedicated display niches that celebrate kitchen appliances rather than conceal them. The bathrooms were similarly reimagined with ageing in mind, incorporating accessible layouts and built-in shower seats without compromising comfort or luxury. In the common bathroom, a custom stone basin and vanity create an intimate retreat that also doubles as a powder room for guests."
+        ],
         "images": {
             "off": "/images/projects/everyday-rituals-off.svg",
             "on": "/images/projects/everyday-rituals-on.svg"
@@ -209,6 +237,13 @@
         "name": "Nook and Move",
         "department": "interior-design",
         "category": "residential",
+        "date": "2024",
+        "location": "CCK, Singapore",
+        "scope": "Interiors, Room Makeover",
+        "summary": "A playful reimagining of a compact bedroom, where multifunctional furniture, clever storage and intimate nooks create room for work, play and a special someone.",
+        "description": [
+            "After 20 years in her family's five-room HDB flat, the owner's daughter decided it was time for her bedroom to grow with her — and make room for a special someone. Upgrading from a single to a double bed presented a spatial challenge: how could the room accommodate two without sacrificing precious space for work, play and her growing collection of treasured objects? Rather than pushing furniture against the walls, the design takes an unconventional approach, positioning a multifunctional table at the centre of the room to create a more flexible, free-flowing layout. The table doubles as a spatial divider, shielding the bed from the entrance to create a cosy, intimate nook, while serving as both a workspace and vanity. A whimsical rolling mirror that doubles as a tissue dispenser adds an unexpected touch of playfulness. Illuminated display niches celebrate her collectibles, while cleverly concealed storage keeps clutter at bay. The result is a compact yet versatile sanctuary that balances privacy and openness, practicality and personality — a room designed to adapt to its occupant's changing needs."
+        ],
         "images": {
             "off": "/images/projects/nook-and-move-off.svg",
             "on": "/images/projects/nook-and-move-on.svg"

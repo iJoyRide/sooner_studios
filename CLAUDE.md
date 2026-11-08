@@ -24,6 +24,8 @@ app/
   globals.css                # light-off / light-on tokens, base styles
   [department]/page.tsx      # "All" view: /lighting, /interior-design
   [department]/[category]/page.tsx   # /lighting/pendants, /interior-design/residential etc.
+  [department]/[category]/[slug]/page.tsx   # project page: /interior-design/commercial/beth
+                                            # (interior design only; anything else → notFound())
 components/
   Header.tsx                 # client: "Sooner" wordmark + department links (current one highlighted)
   PageTitle.tsx              # centred: department or category name + "N pieces" / "N projects"
@@ -32,10 +34,11 @@ components/
   CategorySheet.tsx          # mobile: bottom sheet listing categories with counts
   LightToggle.tsx            # the switch; reused in CategoryBar and MobileDock
   ProductGrid.tsx            # 4 cols ≥1024px, 2 cols below
-  ProductCard.tsx            # stacked off/on images, name, material (or category label if no material)
+  ProductCard.tsx            # stacked off/on images, name, material (or category label if no material);
+                             # interior design cards link to their project page
 lib/
   light-context.tsx          # client context: lit boolean, toggle(), persisted in localStorage
-  products.ts                # getAll, getByDepartment, getByCategory, counts
+  products.ts                # getAll, getByDepartment, getByCategory, getBySlug, counts
   categories.ts              # departments (slug, label, noun) → categories (slug + label)
 data/products.json
 public/images/products/      # <slug>-off / <slug>-on images for every lighting product
@@ -58,8 +61,26 @@ public/images/projects/      # <slug>-off / <slug>-on images for every interior 
 }
 ```
 
-`material` is optional. Interior design projects have none; their card shows the category
+`material` is optional. Interior Design projects have none; their card shows the category
 label ("Residential" / "Commercial") instead.
+
+Interior Design projects also have these optional fields, shown on the project page:
+
+```json
+{
+  "date": "2025",
+  "location": "Upper Thomson, Singapore",
+  "scope": "Interiors, Brand Activation",
+  "summary": "One short line describing the project.",
+  "description": ["First paragraph…", "Second paragraph…"]
+}
+```
+
+Project page: "← All projects" link, large off/on image (fades with the Light toggle) beside
+name, Date / Location / Scope (`<dl>`), summary and description; "Next project →" at the bottom
+cycles through projects in `products.json` order.
+
+Next.js has `cacheComponents` on: don't use `dynamicParams`; reject unknown params with `notFound()`.
 
 Departments and categories (each department has a `noun` used in the title count):
 - lighting (noun "piece"): pendants, sconces, table, floor, outdoor
@@ -87,7 +108,7 @@ Departments and categories (each department has a `noun` used in the title count
 ## Layout
 
 **Desktop (≥1024px)**
-- Header: "Sooner" wordmark on the left, department links on the right (Lighting · Interior design),
+- Header: "Sooner" wordmark on the left, department links on the right (Lighting · Interior Design),
   built from `departments`. Current department in `--ink` with `aria-current="page"` (category pages count),
   others in `--muted`. Links are 44px tall.
 - Centred title block: "Lighting" with "113 pieces" underneath (muted).

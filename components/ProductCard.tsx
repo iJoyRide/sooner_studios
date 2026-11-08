@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Product } from "@/lib/products";
 import { departments } from "@/lib/categories";
 
@@ -11,8 +12,14 @@ export default function ProductCard({ product, eager = false }: ProductCardProps
   const department = departments.find((d) => d.slug === product.department);
   const category = department?.categories.find((c) => c.slug === product.category);
   const detail = product.material ?? category?.label;
-  return (
-    <li>
+
+  const href =
+    product.department === "interior-design"
+      ? `/${product.department}/${product.category}/${product.slug}`
+      : undefined;
+
+  const content = (
+    <>
       <div className="relative aspect-5/6 overflow-hidden bg-tile">
         <Image
           src={product.images.off}
@@ -31,6 +38,18 @@ export default function ProductCard({ product, eager = false }: ProductCardProps
       </div>
       <h2 className="mt-3 font-medium">{product.name}</h2>
       <p className="text-muted">{detail}</p>
+    </>
+  );
+
+  return (
+    <li>
+      {href ? (
+        <Link href={href} className="group block">
+          {content}
+        </Link>
+      ) : (
+        content
+      )}
     </li>
   );
 }
