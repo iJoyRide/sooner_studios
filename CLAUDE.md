@@ -1,6 +1,6 @@
 # Sooner — project brief
 
-Sooner is a **showcase** site (not a shop) for lighting, furniture and interior design pieces.
+Sooner is a **showcase** site (not a shop) for lighting pieces and interior design projects.
 Its signature feature is a **Light toggle**: every product is shown in two
 photos, lamp off (daylight) and lamp on (evening), and the whole page fades
 between the two moods.
@@ -22,23 +22,24 @@ app/
   layout.tsx                 # <html>, font, LightProvider, sets data-light on <html>
   page.tsx                   # redirect to /lighting
   globals.css                # light-off / light-on tokens, base styles
-  [department]/page.tsx      # "All" view: /lighting, /furniture, /interior-design
-  [department]/[category]/page.tsx   # /lighting/pendants etc.
+  [department]/page.tsx      # "All" view: /lighting, /interior-design
+  [department]/[category]/page.tsx   # /lighting/pendants, /interior-design/residential etc.
 components/
-  Header.tsx                 # "Sooner" wordmark only
-  PageTitle.tsx              # centred: department or category name + "N pieces"
+  Header.tsx                 # client: "Sooner" wordmark + department links (current one highlighted)
+  PageTitle.tsx              # centred: department or category name + "N pieces" / "N projects"
   CategoryBar.tsx            # desktop: centred tabs + LightToggle at right end; sticky on scroll
   MobileDock.tsx             # mobile: floating pill at bottom — category button | light toggle
   CategorySheet.tsx          # mobile: bottom sheet listing categories with counts
   LightToggle.tsx            # the switch; reused in CategoryBar and MobileDock
   ProductGrid.tsx            # 4 cols ≥1024px, 2 cols below
-  ProductCard.tsx            # stacked off/on images, name, material
+  ProductCard.tsx            # stacked off/on images, name, material (or category label if no material)
 lib/
   light-context.tsx          # client context: lit boolean, toggle(), persisted in localStorage
   products.ts                # getAll, getByDepartment, getByCategory, counts
-  categories.ts              # departments → categories (slug + label)
+  categories.ts              # departments (slug, label, noun) → categories (slug + label)
 data/products.json
-public/images/products/      # <slug>-off.jpg and <slug>-on.jpg for every product
+public/images/products/      # <slug>-off / <slug>-on images for every lighting product
+public/images/projects/      # <slug>-off / <slug>-on images for every interior design project
 ```
 
 ## Data shape
@@ -57,10 +58,15 @@ public/images/products/      # <slug>-off.jpg and <slug>-on.jpg for every produc
 }
 ```
 
-Departments and categories:
-- lighting: pendants, sconces, table, floor, outdoor
-- furniture: (to be decided)
-- interior-design: (to be decided; decor pieces shown as product cards)
+`material` is optional. Interior design projects have none; their card shows the category
+label ("Residential" / "Commercial") instead.
+
+Departments and categories (each department has a `noun` used in the title count):
+- lighting (noun "piece"): pendants, sconces, table, floor, outdoor
+- interior-design (noun "project"): residential, commercial. The client's spatial projects
+  (Beth, DINKWAC!, Good Company, Everyday Rituals, Nook and Move), shown as cards in the same grid.
+  Real copy (date, location, scope, description) is on soonerstudios.framer.website/projects/*.
+- furniture: on hold until the client has pieces to show
 
 ## Design tokens
 
@@ -81,7 +87,9 @@ Departments and categories:
 ## Layout
 
 **Desktop (≥1024px)**
-- Header: "Sooner" wordmark on the left, nothing else.
+- Header: "Sooner" wordmark on the left, department links on the right (Lighting · Interior design),
+  built from `departments`. Current department in `--ink` with `aria-current="page"` (category pages count),
+  others in `--muted`. Links are 44px tall.
 - Centred title block: "Lighting" with "113 pieces" underneath (muted).
 - Category bar: full column width, no rules, 68px tall, sits close under the title. Tabs centred as slim
   ~30px pills inside 44px click areas (selected = filled ink pill with bg-coloured text; others = 1px rule outline). First tab is "All".
@@ -89,7 +97,7 @@ Departments and categories:
 - When scrolled, the category bar sticks to the top with a soft shadow; header and title scroll away.
 
 **Mobile (<1024px)**
-- Header: wordmark only, rule below.
+- Header: wordmark and department links on one line, rule below.
 - Title left-aligned: category name + "N pieces".
 - 2-column grid.
 - No tab bar. A floating dock sits 28px above the bottom (respect `env(safe-area-inset-bottom)`):
@@ -113,7 +121,7 @@ Departments and categories:
 - Real `<button>` / `<a>` elements; touch targets ≥44px.
 - LightToggle: `aria-pressed`, label "Lighting: off" / "Lighting: on".
 - Category button: label "Category: <name>. Change category".
-- Current tab/row: `aria-current="page"`.
+- Current tab/row/header department link: `aria-current="page"`.
 - CategorySheet: `role="dialog"`, focus trapped while open, Esc closes, focus returns to the dock button.
 - Visible focus outlines. Respect `prefers-reduced-motion` (no fades).
 - Text contrast ≥4.5:1 in both moods.
