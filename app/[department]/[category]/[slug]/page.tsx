@@ -54,10 +54,10 @@ export default async function ProjectPage(props: PageProps<"/[department]/[categ
                 </Link>
 
                 <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-                    <ProjectCarousel
-                        photos={[project.images.off, project.images.on]} // stand-in until PER-27 adds gallery
-                        name={project.name}
-                    />
+                    {project.gallery && (
+                        <ProjectCarousel photos={project.gallery} name={project.name} />
+                    )}
+
 
 
                     <div>

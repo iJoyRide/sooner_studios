@@ -14,20 +14,22 @@ export default function DepartmentTile({ department, eager = false }: Department
 
     if (!first) return null;
 
-    const fades = department.slug === "lighting";
+    const photo = first.images?.off ?? first.gallery?.[0];
 
     return (
         <li>
             <Link href={`/${department.slug}`} className="group block">
                 <div className="relative aspect-5/6 overflow-hidden bg-tile lg:aspect-4/5">
-                    <Image
-                        src={first.images.off}
-                        alt={first.name}
-                        fill
-                        sizes="(min-width: 1024px) 524px, 100vw"
-                        loading={eager ? "eager" : undefined}
-                    />
-                    {fades && (
+                    {photo && (
+                        <Image
+                            src={photo}
+                            alt={first.name}
+                            fill
+                            sizes="(min-width: 1024px) 524px, 100vw"
+                            loading={eager ? "eager" : undefined}
+                        />
+                    )}
+                    {first.images && (
                         <Image
                             src={first.images.on}
                             alt=""
@@ -36,6 +38,7 @@ export default function DepartmentTile({ department, eager = false }: Department
                             className="lamp-on"
                         />
                     )}
+
                 </div>
 
                 <h2 className="mt-3 text-[17px] font-medium group-hover:underline">

@@ -12,10 +12,11 @@ export type Product = {
     scope?: string;
     summary?: string;
     description?: string[];
-    images: {
+    images?: {
         off: string;
         on: string;
     };
+    gallery?: string[];
 };
 
 
