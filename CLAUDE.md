@@ -20,7 +20,7 @@ No cart, prices, search or filters. Keep it minimal and editorial.
 ```
 app/
   layout.tsx                 # <html>, font, LightProvider, sets data-light on <html>
-  page.tsx                   # redirect to /lighting
+  page.tsx                   # home page: intro line, LightToggle, two department tiles
   globals.css                # light-off / light-on tokens, base styles
   [department]/page.tsx      # "All" view: /lighting, /interior-design
   [department]/[category]/page.tsx   # /lighting/pendants, /interior-design/residential etc.
@@ -28,6 +28,8 @@ app/
                                             # (interior design only; anything else → notFound())
 components/
   Header.tsx                 # client: "Sooner" wordmark + department links (current one highlighted)
+  Footer.tsx                 # every page (in layout.tsx): email, Instagram, ©SOONER <year>
+  DepartmentTile.tsx         # home page: large image tile linking to a department
   PageTitle.tsx              # centred: department or category name + "N pieces" / "N projects"
   CategoryBar.tsx            # desktop: centred tabs + LightToggle at right end; sticky on scroll
   MobileDock.tsx             # mobile: floating pill at bottom — category button | light toggle
@@ -80,6 +82,11 @@ Project page: "← All projects" link, large off/on image (fades with the Light 
 name, Date / Location / Scope (`<dl>`), summary and description; "Next project →" at the bottom
 cycles through projects in `products.json` order.
 
+Light toggle placement must be the same on every page: on desktop it sits at the right end of a
+sticky bar (the CategoryBar on grid pages; on project pages a slim bar with "← All projects" on the
+left and the LightToggle on the right, same height, stickiness and shadow as the CategoryBar). On
+mobile it is in the MobileDock. The home page has it under the intro line.
+
 Next.js has `cacheComponents` on: don't use `dynamicParams`; reject unknown params with `notFound()`.
 
 Departments and categories (each department has a `noun` used in the title count):
@@ -106,6 +113,55 @@ Departments and categories (each department has a `noun` used in the title count
 - Content column: 1048px of content (max-width 1080px including 16px side padding), centred. Grid gap 16px across, 24px down. Card image aspect 5:6 (250×300 at full width).
 
 ## Layout
+
+**Home page (`/`)**
+
+```
+Sooner                                    Lighting   Interior Design
+
+          An independent design label exploring furniture,
+          lighting, objects and spaces through material,
+          construction and proportion.
+
+                         💡 Light  [○  ]
+
+┌──────────────────────────────┐  ┌──────────────────────────────┐
+│                              │  │                              │
+│   first lighting product     │  │   first interior design      │
+│   (off/on, fades)            │  │   project photo              │
+│                              │  │                              │
+└──────────────────────────────┘  └──────────────────────────────┘
+Lighting →                         Interior Design →
+15 pieces                          5 projects
+
+──────────────────────────────────────────────────────────────────
+Contact                     Follow            Explore
+soonerstudios.sg@gmail.com  Instagram         Lighting
+                                              Interior Design
+Singapore                                                ©SOONER 2026
+```
+
+- Intro line (the client's own copy, verbatim): "An independent design label exploring furniture,
+  lighting, objects and spaces through material, construction and proportion."
+  Centred, ~24px/500 on desktop, 18px on mobile, max ~640px wide. This is the page's `<h1>`.
+- LightToggle centred under the intro line (same component as the CategoryBar and dock).
+- Two department tiles, built from `departments` (so a new department adds a tile):
+  side by side on desktop (16px gap), stacked on mobile. Each tile is one link: image (aspect 5:6
+  on mobile, 4:5 on desktop), then department label + "→", then the count ("15 pieces") in muted.
+  Image = the first product in that department in `products.json` order. Lighting's tile uses the
+  off/on pair and fades with the toggle; Interior Design's uses the project photo.
+- No CategoryBar, no MobileDock on the home page.
+
+**Footer (every page)**
+- Added once in `layout.tsx`, below the page content, `--rule` line on top. A `<footer>` landmark.
+- Three labelled columns, labels in `--muted`, links in `--ink`:
+  - **Contact**: email as a `mailto:` link (soonerstudios.sg@gmail.com)
+  - **Follow**: Instagram (https://instagram.com/soonerstudios, opens in a new tab, `rel="noopener noreferrer"`)
+  - **Explore**: one link per department, built from `departments`
+- Bottom row: "Singapore" on the left, "©SOONER" + current year on the right, both muted.
+- Desktop: columns side by side. Mobile: columns stacked (or 2 across), bottom row stacked.
+  Links are 44px tall touch targets.
+- On pages with the MobileDock, keep enough bottom padding that the dock never covers the footer.
 
 **Desktop (≥1024px)**
 - Header: "Sooner" wordmark on the left, department links on the right (Lighting · Interior Design),
