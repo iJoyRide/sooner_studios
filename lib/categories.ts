@@ -18,8 +18,8 @@ export const departments: Department[] = [
         categories: [
             { slug: "pendants", label: "Pendants" },
             { slug: "sconces", label: "Sconces" },
-            { slug: "table", label: "Table lamps" },
-            { slug: "floor", label: "Floor lamps" },
+            { slug: "table", label: "Table Lamps" },
+            { slug: "floor", label: "Floor Lamps" },
             { slug: "outdoor", label: "Outdoor" },
         ],
 
@@ -27,7 +27,7 @@ export const departments: Department[] = [
 
     {
         slug: "interior-design",
-        label: "Interior design",
+        label: "Interior Design",
         noun: "project",
         categories: [
             { slug: "residential", label: "Residential"},

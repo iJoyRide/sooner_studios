@@ -7,11 +7,17 @@ export type Product = {
     department: string;
     category: string;
     material?: string;
+    date?: string;
+    location?: string;
+    scope?: string;
+    summary?: string;
+    description?: string[];
     images: {
         off: string;
         on: string;
     };
 };
+
 
 const products: Product[] = data;
 
@@ -51,4 +57,8 @@ export function getCategoryCounts(departmentSlug: string): Record<string, number
     }
 
     return counts;
+}
+
+export function getBySlug(slug: string): Product | undefined {
+    return products.find((product) => product.slug === slug);
 }
