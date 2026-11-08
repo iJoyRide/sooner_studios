@@ -41,6 +41,7 @@ components/
   ProductGrid.tsx            # 4 cols ≥1024px, 2 cols below
   ProductCard.tsx            # stacked off/on images, name, material (or category label if no material);
                              # interior design cards link to their project page
+  ProjectCarousel.tsx        # client: project page photos, one at a time; arrows, swipe, ←/→ keys, "2 / 6" counter
 lib/
   light-context.tsx          # client context: lit boolean, toggle(), persisted in localStorage
   products.ts                # getAll, getByDepartment, getByCategory, getBySlug, counts
@@ -81,9 +82,16 @@ Interior Design projects also have these optional fields, shown on the project p
 }
 ```
 
-Project page: "← All projects" link, large off/on image (fades with the Light toggle) beside
+Project page: "← All projects" link, large photo carousel (`ProjectCarousel`) beside
 name, Date / Location / Scope (`<dl>`), summary and description; "Next project →" at the bottom
 cycles through projects in `products.json` order.
+
+ProjectCarousel: one 5:6 photo at a time. Previous / Next `<button>`s (44px, labelled "Previous photo" /
+"Next photo") over the photo, wrapping at the ends; swipe on touch (>50px); ←/→ keys when the carousel
+has focus (`role="region"`, `aria-roledescription="carousel"`). Counter "2 / 6" under the photo with
+`aria-live="polite"`. Alt text "<name>, photo 2 of 6". Only the current photo is rendered, no slide
+animation. With one photo, arrows and counter are hidden. Until PER-27 adds `gallery`, the page passes
+`[images.off, images.on]` as the photos.
 
 Light toggle placement must be the same on every page: on desktop it sits at the right end of a
 sticky bar (the CategoryBar on grid pages; on project pages a slim bar with "← All projects" on the
