@@ -163,5 +163,55 @@
             "off": "/images/products/garden-orb-light-off.svg",
             "on": "/images/products/garden-orb-light-on.svg"
         }
+    },
+    {   
+        "slug": "beth",
+        "name": "Beth",
+        "department" : "interior-design",
+        "category": "commercial",
+        "images" : {
+            "off": "/images/projects/beth-off.svg",
+            "on": "/images/projects/beth-on.svg"
+        }
+    },
+    {
+        "slug": "dinkwac",
+        "name": "DINKWAC!",
+        "department": "interior-design",
+        "category": "residential",
+        "images": {
+            "off": "/images/projects/dinkwac-off.svg",
+            "on": "/images/projects/dinkwac-on.svg"
+        }
+    },
+    {
+        "slug": "good-company",
+        "name": "Good Company",
+        "department": "interior-design",
+        "category": "residential",
+        "images": {
+            "off": "/images/projects/good-company-off.svg",
+            "on": "/images/projects/good-company-on.svg"
+        }
+    },
+    {
+        "slug": "everyday-rituals",
+        "name": "Everyday Rituals",
+        "department": "interior-design",
+        "category": "residential",
+        "images": {
+            "off": "/images/projects/everyday-rituals-off.svg",
+            "on": "/images/projects/everyday-rituals-on.svg"
+        }
+    },
+    {
+        "slug": "nook-and-move",
+        "name": "Nook and Move",
+        "department": "interior-design",
+        "category": "residential",
+        "images": {
+            "off": "/images/projects/nook-and-move-off.svg",
+            "on": "/images/projects/nook-and-move-on.svg"
+        }
     }
 ]
