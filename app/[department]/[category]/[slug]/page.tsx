@@ -53,13 +53,11 @@ export default async function ProjectPage(props: PageProps<"/[department]/[categ
                     ← All projects
                 </Link>
 
-                <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-                    {project.gallery && (
-                        <ProjectCarousel photos={project.gallery} name={project.name} />
-                    )}
+                {project.gallery && (
+                    <ProjectCarousel photos={project.gallery} name={project.name} />
+                )}
 
-
-
+                <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[1fr_2fr] lg:gap-12">
                     <div>
                         <h1 className="text-[20px] font-medium leading-tight lg:text-[30px]">
                             {project.name}
@@ -73,9 +71,11 @@ export default async function ProjectPage(props: PageProps<"/[department]/[categ
                             <dt className="text-muted">Scope</dt>
                             <dd>{project.scope}</dd>
                         </dl>
+                    </div>
 
+                    <div className="max-w-[65ch]">
                         {project.summary && (
-                            <p className="mt-8 text-[17px] leading-snug">{project.summary}</p>
+                            <p className="text-[17px] leading-snug">{project.summary}</p>
                         )}
 
                         <div className="mt-6 space-y-4 leading-relaxed">
@@ -96,6 +96,6 @@ export default async function ProjectPage(props: PageProps<"/[department]/[categ
                     </Link>
                 </nav>
             </div>
-        </main>
+        </main >
     );
 }

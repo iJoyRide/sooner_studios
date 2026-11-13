@@ -50,7 +50,7 @@ export default function ProjectCarousel({ photos, name }: ProjectCarouselProps) 
             onKeyDown={handleKeyDown}
         >
             <div
-                className="relative aspect-5/6 touch-pan-y overflow-hidden bg-tile"
+                className="relative aspect-3/2 touch-pan-y overflow-hidden bg-tile"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
             >
@@ -59,9 +59,11 @@ export default function ProjectCarousel({ photos, name }: ProjectCarouselProps) 
                     src={photos[index]}
                     alt={`${name}, photo ${index + 1} of ${count}`}
                     fill
-                    sizes="(min-width: 1024px) 524px, 100vw"
+                    sizes="(min-width: 1024px) 1048px, 100vw"
                     loading={index === 0 ? "eager" : undefined}
+                    className="object-cover"
                 />
+
 
                 {count > 1 && (
                     <>
